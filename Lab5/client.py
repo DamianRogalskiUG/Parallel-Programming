@@ -12,11 +12,11 @@ def main():
     for _ in range(5):
         input_queue.send(word.encode('utf-8'), type=client_pid)
         if word == "stop":
-            print("Serwer został zatrzymany. Dalsze zapytania nie będą obsługiwane.")
+            print("Server received stop signal. Server stopped.")
             break
         message, _ = output_queue.receive(type=client_pid)
         response = message.decode('utf-8')
-        print(f"Odpowiedź serwera: {response}")
+        print(f"Server response: {response}")
 
 if __name__ == "__main__":
     main()
